@@ -47,9 +47,12 @@ const AvailableAppointment = ({ date }) => {
       <h2>Available Appointment {date.toDateString()}</h2>
       <Grid container spacing={2}>
         {bookings.map((booking) => (
-          <Booking booking={booking}></Booking>
+          <Booking booking={booking}
+          date={date}
+          ></Booking>
         ))}
       </Grid>
+    
     </Container>
   );
 };
