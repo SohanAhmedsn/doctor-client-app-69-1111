@@ -10,7 +10,7 @@ import { Link, NavLink } from "react-router-dom";
 import UseAuth from "./../../../Hook/UseAuth";
 
 const Navigation = () => {
-  const { user, logout } = UseAuth();
+  const { user, logOut } = UseAuth();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -27,13 +27,21 @@ const Navigation = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Doctor Portal
           </Typography>
-          <Link to="/appointment">
+          <Link
+            style={{ textDecoration: "none", color: "white" }}
+            to="/appointment"
+          >
             <Button color="inherit">Appointmetn</Button>
           </Link>
           {user?.email ? (
-            <Button onClick={logout} color="inherit">Logout</Button>
+            <Button onClick={logOut} color="inherit">
+              Logout
+            </Button>
           ) : (
-            <NavLink to="/login">
+            <NavLink
+              style={{ textDecoration: "none", color: "white" }}
+              to="/login"
+            >
               <Button color="inherit">Login</Button>
             </NavLink>
           )}

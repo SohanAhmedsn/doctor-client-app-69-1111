@@ -5,6 +5,7 @@ import {
   TextField,
   Typography,
   CircularProgress,
+  Alert,
 } from "@mui/material";
 import { useState } from "react";
 import Box from "@mui/material/Box";
@@ -17,7 +18,7 @@ import UseAuth from "../../../Hook/UseAuth";
 const Register = () => {
   const [loginData, setLoginData] = useState({});
 
-  const { registerUser, isLoading } = UseAuth();
+  const {user, registerUser, isLoading } = UseAuth();
   const handleOnChange = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -83,6 +84,9 @@ const Register = () => {
             </form>
           )}
           {isLoading && <CircularProgress />}
+          {user?.email && (
+            <Alert severity="success">User created successfully</Alert>
+          )}
         </Grid>
         <Grid item xs={12} md={6}>
           <img style={{ width: "100%" }} src={login} alt="" />
